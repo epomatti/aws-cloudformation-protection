@@ -1,0 +1,56 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Simple S3 bucket stack",
+  "Parameters": {
+    "EnvironmentTag": {
+      "Type": "String",
+      "Default": "development",
+      "AllowedValues": [
+        "development",
+        "staging",
+        "production"
+      ]
+    }
+  },
+  "Resources": {
+    "S3Bucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Environment",
+            "Value": {
+              "Ref": "EnvironmentTag"
+            }
+          }
+        ]
+      }
+    },
+    "BasicParameter": {
+      "Type": "AWS::SSM::Parameter",
+      "Properties": {
+        "Name": "command",
+        "Type": "String",
+        "Value": "Test data"
+      }
+    }
+  },
+  "Outputs": {
+    "S3BucketSecureURL": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Fn::GetAtt": [
+                "S3Bucket",
+                "DomainName"
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

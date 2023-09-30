@@ -1,4 +1,4 @@
-# aws-cloudformation
+# AWS CloudFormation protection
 
 Simple CF template to test some security features to protect stack resources.
 

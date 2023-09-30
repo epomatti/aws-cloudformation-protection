@@ -25,7 +25,7 @@ aws cloudformation create-stack \
 
 A new S3 bucket and SSM parameter will be created.
 
-Now set the stack policy:
+Now, set the stack policy:
 
 ```sh
 aws cloudformation set-stack-policy \
@@ -37,7 +37,7 @@ aws cloudformation set-stack-policy \
 
 Let's see if the stack policy works.
 
-Create a **change set**:
+Create the **change set**:
 
 ```sh
 aws cloudformation create-change-set \
@@ -63,7 +63,7 @@ The stack policy will block it, as expected:
 <img src="img/changeset-error.png" />
 
 
-Now apply an this "allow all" policy and re-try the change set commands afterwards:
+Now apply this "allow all" policy and re-try the change set commands afterwards:
 
 ```sh
 aws cloudformation set-stack-policy \
@@ -71,7 +71,7 @@ aws cloudformation set-stack-policy \
     --stack-policy-body file://stack-policy-allow.json
 ```
 
-This time it will work:
+This time without a policy, the required changes will be allowed:
 
 <img src="img/changeset-ok.png" />
 

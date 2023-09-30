@@ -1,4 +1,4 @@
-# AWS CloudFormation protection
+# AWS CloudFormation - Protection
 
 CloudFormation templates to test security features to protect stack resources.
 

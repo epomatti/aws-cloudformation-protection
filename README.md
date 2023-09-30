@@ -1,8 +1,8 @@
 # AWS CloudFormation protection
 
-Simple CF template to test some security features to protect stack resources.
+CloudFormation templates to test security features to protect stack resources.
 
-This exercise till test two scenarios:
+This exercise will test two scenarios:
 
 1. **Delete protection**: Prevent the stack from being accidentally being setting `--enable-termination-protection`.
 2. **Stack policy**: Setting a stack policy to prevent updates to the stack by restricting `Update:Delete` and `Update:Replace` actions.
@@ -11,7 +11,7 @@ Further information in the documentation on how to [protect stack resources][1].
 
 ## Setup
 
-Create the stack:
+Create the **stack**:
 
 > Stack created with `--enable-termination-protection` to protect against accidental deletes
 
@@ -37,7 +37,7 @@ aws cloudformation set-stack-policy \
 
 Let's see if the stack policy works.
 
-Create a change set:
+Create a **change set**:
 
 ```sh
 aws cloudformation create-change-set \
@@ -73,7 +73,7 @@ aws cloudformation set-stack-policy \
 
 This time it will work:
 
-<img src="img/changeset-error.png" />
+<img src="img/changeset-ok.png" />
 
 ## Delete protection
 
